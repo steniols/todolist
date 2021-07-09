@@ -2,10 +2,13 @@
 
 Um simples aplicativo de tarefas utilizando Postgress, Express, React e Node.
 
+## Live
+
+https://steniols-pern-todo-list.herokuapp.com/
+
 ## Instalar o servidor
 
 ```bash
-cd server
 cp .env.sample .env
 npm install
 ```
@@ -17,10 +20,11 @@ Rode o comando abaixo, que irá criar o banco de dados padrão em uma imagem do 
 ```bash
 docker run -d -p 5432:5432 -e POSTGRES_USERNAME=postgres -e POSTGRES_PASSWORD=password -e POSTGRES_DB=perntodolist postgres:12.6
 ```
+
 ## Rodar o servidor
 
 ```bash
-node index.js
+npm start
 ```
 
 ## Instalar o cliente
@@ -28,5 +32,10 @@ node index.js
 ```bash
 cd client
 npm install
+```
+
+## Rodar o cliente
+
+```bash
 npm start
 ```

@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import env from 'react-dotenv';
 
 const Login = ({ setAuth }) => {
-  const apiUrl = env.API_URL ? `${env.API_URL}/auth` : '/auth';
+  const apiUrl = env.API_URL ? `${env.API_URL}/auth` : '/api/auth';
   const [inputs, setInputs] = useState({
     email: '',
     password: '',

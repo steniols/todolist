@@ -4,7 +4,7 @@ import PageTop from './PageTop';
 import env from 'react-dotenv';
 
 const Dashboard = (props) => {
-  const apiUrl = env.API_URL ? `${env.API_URL}` : '';
+  const apiUrl = env.API_URL ? `${env.API_URL}` : '/api';
   const [tasks, setTasks] = useState([]);
 
   async function getTasks() {

@@ -20,7 +20,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  const apiUrl = env.API_URL ? `${env.API_URL}` : '';
+  const apiUrl = env.API_URL ? `${env.API_URL}` : '/api';
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [name, setName] = useState('');
   const setAuth = (boolean) => {
