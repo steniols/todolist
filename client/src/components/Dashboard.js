@@ -3,16 +3,18 @@ import { toast } from 'react-toastify';
 import PageTop from './PageTop';
 
 const Dashboard = (props) => {
-  const apiUrl = '/tasks';
+  const apiUrl = '/api/tasks';
 
   const [tasks, setTasks] = useState([]);
 
   async function getTasks() {
     try {
-      const response = await fetch(apiUrl, {
+      const response = await fetch(apiUrl + '/all', {
         method: 'GET',
         headers: { token: localStorage.token },
       });
+
+      console.log(response);
 
       const parseRes = await response.json();
       setTasks(parseRes);

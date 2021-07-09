@@ -3,7 +3,7 @@ import { Redirect } from 'react-router';
 import { toast } from 'react-toastify';
 import PageTop from './PageTop';
 
-const apiUrl = '/tasks';
+const apiUrl = '/api/tasks';
 
 class TaskEdit extends React.Component {
   constructor(props) {

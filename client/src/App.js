@@ -28,7 +28,7 @@ function App() {
 
   async function isAuth() {
     try {
-      const response = await fetch('http://localhost:5000/auth/is-verify', {
+      const response = await fetch('/api/auth/is-verify', {
         method: 'GET',
         headers: { token: localStorage.token },
       });
@@ -39,12 +39,13 @@ function App() {
         : setIsAuthenticated(false);
     } catch (err) {
       console.log(err.message);
+      console.log('???');
     }
   }
 
   async function getName() {
     try {
-      const response = await fetch('http://localhost:5000/dashboard', {
+      const response = await fetch('/api/dashboard', {
         method: 'GET',
         headers: { token: localStorage.token },
       });
@@ -53,6 +54,7 @@ function App() {
       setName(parseRes.user_name);
     } catch (err) {
       console.log(err.message);
+      console.log('???');
     }
   }
 

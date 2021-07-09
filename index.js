@@ -12,11 +12,15 @@ if (process.env.NODE_ENV == 'production') {
   app.use(express.static(path.join(__dirname, 'client/build')));
 
   app.get('*', (req, res) => {
+    if (req.url.includes('api')) return next();
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
+app.use(express.static(path.join(__dirname, 'client/build')));
 
-console.log(path.join(__dirname, 'client/build'));
+// app.get('*', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+// });
 
 app.unsubscribe(express.json());
 app.use(cors());
@@ -39,9 +43,9 @@ app.use((req, res, next) => {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use('/auth', require('./routes/jwtAuth'));
-app.use('/dashboard', require('./routes/dashboard'));
-app.use('/tasks', require('./routes/tasks'));
+app.use('/api/auth', require('./routes/jwtAuth'));
+app.use('/api/dashboard', require('./routes/dashboard'));
+app.use('/api/tasks', require('./routes/tasks'));
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

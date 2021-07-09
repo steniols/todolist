@@ -3,7 +3,7 @@ const authorization = require('../middleware/authorization');
 const queries = require('../database/queriesTasks');
 const queriesUsers = require('../database/queriesUsers');
 
-router.get('/', authorization, async (req, res) => {
+router.get('/all', authorization, async (req, res) => {
   try {
     const tasks = await queries.getAll(req.user);
     res.json(tasks);
