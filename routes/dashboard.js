@@ -13,4 +13,12 @@ router.get('/', authorization, async (req, res) => {
   }
 });
 
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'client/build/index.html'), function (err) {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
+});
+
 module.exports = router;

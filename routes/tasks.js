@@ -26,6 +26,7 @@ router.post('/save', authorization, async (req, res) => {
   }
   try {
     const user = await queriesUsers.getOne(req.user);
+    console.log('user', user);
     const data = {
       task_title: req.body.task_title,
       task_description: req.body.task_description,
@@ -89,6 +90,14 @@ router.post('/delete', authorization, async (req, res) => {
     console.log(error.message);
     res.status(500).send('Ocorreu um erro no servidor');
   }
+});
+
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'client/build/index.html'), function (err) {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
 });
 
 module.exports = router;
