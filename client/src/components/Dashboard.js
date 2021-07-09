@@ -1,15 +1,15 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import PageTop from './PageTop';
+import env from 'react-dotenv';
 
 const Dashboard = (props) => {
-  const apiUrl = '/api/tasks';
-
+  const apiUrl = env.API_URL ? `${env.API_URL}` : '';
   const [tasks, setTasks] = useState([]);
 
   async function getTasks() {
     try {
-      const response = await fetch(apiUrl + '/all', {
+      const response = await fetch(apiUrl + '/tasks', {
         method: 'GET',
         headers: { token: localStorage.token },
       });
@@ -29,7 +29,7 @@ const Dashboard = (props) => {
         task_id: id,
       };
       console.log(body);
-      const response = await fetch(`${apiUrl}/finish`, {
+      const response = await fetch(`${apiUrl}/tasks/finish`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ const Dashboard = (props) => {
       const body = {
         task_id: id,
       };
-      const response = await fetch(`${apiUrl}/delete`, {
+      const response = await fetch(`${apiUrl}/tasks/delete`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

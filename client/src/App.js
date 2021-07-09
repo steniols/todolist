@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import './App.css';
+import env from 'react-dotenv';
 
 import {
   BrowserRouter as Router,
@@ -19,16 +20,16 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
+  const apiUrl = env.API_URL ? `${env.API_URL}` : '';
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [name, setName] = useState('');
-
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
   };
 
   async function isAuth() {
     try {
-      const response = await fetch('/api/auth/is-verify', {
+      const response = await fetch(`${apiUrl}/auth/is-verify`, {
         method: 'GET',
         headers: { token: localStorage.token },
       });
@@ -45,7 +46,7 @@ function App() {
 
   async function getName() {
     try {
-      const response = await fetch('/api/dashboard', {
+      const response = await fetch(`${apiUrl}/dashboard`, {
         method: 'GET',
         headers: { token: localStorage.token },
       });

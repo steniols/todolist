@@ -2,8 +2,9 @@ import React from 'react';
 import { Redirect } from 'react-router';
 import { toast } from 'react-toastify';
 import PageTop from './PageTop';
+import env from 'react-dotenv';
 
-const apiUrl = '/api/tasks';
+const apiUrl = env.API_URL ? `${env.API_URL}/tasks` : '/tasks';
 
 class TaskEdit extends React.Component {
   constructor(props) {

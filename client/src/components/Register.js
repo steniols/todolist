@@ -1,8 +1,10 @@
 import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import env from 'react-dotenv';
 
 const Register = ({ setAuth }) => {
+  const apiUrl = env.API_URL ? `${env.API_URL}/auth` : '/auth';
   const [inputs, setInputs] = useState({
     email: '',
     password: '',
@@ -19,7 +21,7 @@ const Register = ({ setAuth }) => {
     e.preventDefault();
     try {
       const body = { email, password, name };
-      const response = await fetch('/api/auth/register', {
+      const response = await fetch(`${apiUrl}/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
