@@ -40,7 +40,6 @@ function App() {
         : setIsAuthenticated(false);
     } catch (err) {
       console.log(err.message);
-      console.log('???');
     }
   }
 
@@ -55,7 +54,6 @@ function App() {
       setName(parseRes.user_name);
     } catch (err) {
       console.log(err.message);
-      console.log('???');
     }
   }
 
@@ -63,7 +61,6 @@ function App() {
     e.preventDefault();
     localStorage.removeItem('token');
     setAuth(false);
-    toast('Logged out successfully!');
   };
 
   useEffect(() => {

@@ -33,7 +33,7 @@ const Register = ({ setAuth }) => {
       if (parseResponse.token) {
         localStorage.setItem('token', parseResponse.token);
         setAuth(true);
-        toast('Registro feito com sucesso!');
+        toast('Cadastro realizado com sucesso!');
       } else {
         toast.error(parseResponse);
       }
