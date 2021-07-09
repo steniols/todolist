@@ -11,7 +11,7 @@ router.post('/register', validInfo, async (req, res) => {
     const user = await queries.getOneByEmail(email);
 
     if (user) {
-      return res.status(401).json('User already exists');
+      return res.status(401).json('Usuário já existente');
     }
     const saltRound = 10;
     const salt = await bcrypt.genSalt(saltRound);
@@ -27,7 +27,7 @@ router.post('/register', validInfo, async (req, res) => {
     res.json({ token });
   } catch (err) {
     console.log(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send('Ocorreu um erro no servidor');
   }
 });
 
@@ -38,20 +38,20 @@ router.post('/login', validInfo, async (req, res) => {
     console.log(user);
 
     if (!user) {
-      return res.status(401).json('Password or Email is incorrect');
+      return res.status(401).json('Dados incorretos');
     }
 
     const validPassword = await bcrypt.compare(password, user.user_password);
 
     if (!validPassword) {
-      return res.status(401).json('Password or Email is incorrect');
+      return res.status(401).json('Dados incorretos');
     }
 
     const token = jwtGenerator(user.user_id);
     res.json({ token });
   } catch (err) {
     console.log(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send('Ocorreu um erro no servidor');
   }
 });
 
@@ -60,7 +60,7 @@ router.get('/is-verify', authorization, async (req, res) => {
     res.json(true);
   } catch (err) {
     console.log(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send('Ocorreu um erro no servidor');
   }
 });
 

@@ -70,7 +70,6 @@ router.post('/finish', authorization, async (req, res) => {
 
 router.post('/delete', authorization, async (req, res) => {
   let errors = [];
-  console.log(req.body);
   if (!req.body.task_id) {
     errors.push('O ID é obrigatório');
   }
