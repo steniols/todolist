@@ -9,7 +9,8 @@
   },
   "scripts": {
     "start": "node index.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "knex": "knex"
   },
   "keywords": [],
   "author": "Stenio L. de Souza <steniols@gmail.com> (https://steniols.github.io/)",
