@@ -13,9 +13,6 @@ const Dashboard = (props) => {
         method: 'GET',
         headers: { token: localStorage.token },
       });
-
-      console.log(response);
-
       const parseRes = await response.json();
       setTasks(parseRes);
     } catch (err) {
@@ -28,7 +25,6 @@ const Dashboard = (props) => {
       const body = {
         task_id: id,
       };
-      console.log(body);
       const response = await fetch(`${apiUrl}/tasks/finish`, {
         method: 'POST',
         headers: {
@@ -95,10 +91,18 @@ const Dashboard = (props) => {
       <table className="table">
         <thead>
           <tr>
-            <th scope="col">Título</th>
-            <th scope="col">Descrição</th>
-            <th scope="col">Status</th>
-            <th scope="col">Ações</th>
+            <th scope="col" width="30%">
+              Título
+            </th>
+            <th scope="col" width="35%">
+              Descrição
+            </th>
+            <th scope="col" width="15%">
+              Status
+            </th>
+            <th scope="col" width="20%">
+              Ações
+            </th>
           </tr>
         </thead>
         <tbody>

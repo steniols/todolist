@@ -33,7 +33,7 @@ const Register = ({ setAuth }) => {
       if (parseResponse.token) {
         localStorage.setItem('token', parseResponse.token);
         setAuth(true);
-        toast('Register successfully!');
+        toast('Registro feito com sucesso!');
       } else {
         toast.error(parseResponse);
       }
@@ -44,8 +44,7 @@ const Register = ({ setAuth }) => {
 
   return (
     <Fragment>
-      <h1 className="text-center my-5">Register</h1>
-
+      <h1 className="text-center my-5">Cadastro</h1>
       <form onSubmit={onSubmitForm}>
         <input
           type="email"
@@ -58,7 +57,7 @@ const Register = ({ setAuth }) => {
         <input
           type="password"
           name="password"
-          placeholder="Password..."
+          placeholder="Senha..."
           className="form-control my-3"
           value={password}
           onChange={(e) => onChange(e)}
@@ -66,14 +65,14 @@ const Register = ({ setAuth }) => {
         <input
           type="text"
           name="name"
-          placeholder="Name..."
+          placeholder="Nome..."
           className="form-control my-3"
           value={name}
           onChange={(e) => onChange(e)}
         />
-        <button className="btn btn-success btn-block">Submit</button>
+        <button className="btn btn-success btn-block">Enviar</button>
       </form>
-      <Link to="/login">Login</Link>
+      Já possui uma conta? <Link to="/login">Login</Link>
     </Fragment>
   );
 };

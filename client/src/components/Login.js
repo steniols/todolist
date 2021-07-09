@@ -5,6 +5,7 @@ import env from 'react-dotenv';
 
 const Login = ({ setAuth }) => {
   const apiUrl = env.API_URL ? `${env.API_URL}/auth` : '/api/auth';
+
   const [inputs, setInputs] = useState({
     email: '',
     password: '',
@@ -27,12 +28,11 @@ const Login = ({ setAuth }) => {
         },
         body: JSON.stringify(body),
       });
-
       const parseResponse = await response.json();
       if (parseResponse.token) {
         localStorage.setItem('token', parseResponse.token);
         setAuth(true);
-        toast('Login successfully!');
+        toast('Login realizado com sucesso!');
       } else {
         toast.error(parseResponse);
       }
@@ -56,14 +56,14 @@ const Login = ({ setAuth }) => {
         <input
           type="password"
           name="password"
-          placeholder="Password..."
+          placeholder="Senha..."
           className="form-control my-3"
           value={password}
           onChange={(e) => onChange(e)}
         />
-        <button className="btn btn-success btn-block">Submit</button>
+        <button className="btn btn-success btn-block">Enviar</button>
       </form>
-      <Link to="/register">Register</Link>
+      Não tem uma conta ainda? <Link to="/register">Cadastre-se</Link>
     </Fragment>
   );
 };

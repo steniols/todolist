@@ -26,7 +26,6 @@ router.post('/save', authorization, async (req, res) => {
   }
   try {
     const user = await queriesUsers.getOne(req.user);
-    console.log('user', user);
     const data = {
       task_title: req.body.task_title,
       task_description: req.body.task_description,
@@ -46,7 +45,6 @@ router.post('/save', authorization, async (req, res) => {
 
 router.post('/finish', authorization, async (req, res) => {
   let errors = [];
-  console.log(req.body);
   if (!req.body.task_id) {
     errors.push('O ID é obrigatório');
   }

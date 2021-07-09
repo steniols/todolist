@@ -8,10 +8,6 @@ const queries = require('../database/queriesUsers');
 router.post('/register', validInfo, async (req, res) => {
   try {
     const { name, email, password } = req.body;
-
-    // const user = await pool.query('SELECT * FROM users WHERE user_email = $1', [
-    //   email,
-    // ]);
     const user = await queries.getOneByEmail(email);
 
     if (user) {
@@ -20,11 +16,6 @@ router.post('/register', validInfo, async (req, res) => {
     const saltRound = 10;
     const salt = await bcrypt.genSalt(saltRound);
     const bcryptPassword = await bcrypt.hash(password, salt);
-
-    // const newUser = await pool.query(
-    //   'INSERT INTO users (user_name, user_email, user_password) VALUES ($1, $2, $3) RETURNING *',
-    //   [name, email, bcryptPassword]
-    // );
 
     const newUser = await queries.create({
       user_name: name,
@@ -43,10 +34,6 @@ router.post('/register', validInfo, async (req, res) => {
 router.post('/login', validInfo, async (req, res) => {
   try {
     const { email, password } = req.body;
-
-    // const user = await pool.query('SELECT * FROM users WHERE user_email = $1', [
-    //   email,
-    // ]);
     const user = await queries.getOneByEmail(email);
     console.log(user);
 

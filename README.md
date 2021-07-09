@@ -31,6 +31,7 @@ npm start
 
 ```bash
 cd client
+cp .env.sample .env
 npm install
 ```
 
