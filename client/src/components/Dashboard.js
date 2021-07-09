@@ -1,10 +1,9 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import PageTop from './PageTop';
-import env from 'react-dotenv';
 
 const Dashboard = (props) => {
-  const apiUrl = env.API_URL ? `${env.API_URL}/tasks` : '/tasks';
+  const apiUrl = '/tasks';
 
   const [tasks, setTasks] = useState([]);
 

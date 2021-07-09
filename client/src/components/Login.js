@@ -1,11 +1,11 @@
-import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
+import React, { Fragment, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Login = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   const { email, password } = inputs;
@@ -18,19 +18,19 @@ const Login = ({ setAuth }) => {
     e.preventDefault();
     try {
       const body = { email, password };
-      const response = await fetch("http://localhost:5000/auth/login", {
-        method: "POST",
+      const response = await fetch('/auth/login', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(body),
       });
 
       const parseResponse = await response.json();
       if (parseResponse.token) {
-        localStorage.setItem("token", parseResponse.token);
+        localStorage.setItem('token', parseResponse.token);
         setAuth(true);
-        toast("Login successfully!");
+        toast('Login successfully!');
       } else {
         toast.error(parseResponse);
       }

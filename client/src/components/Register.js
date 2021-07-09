@@ -1,12 +1,12 @@
-import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
+import React, { Fragment, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Register = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
-    email: "",
-    password: "",
-    name: "",
+    email: '',
+    password: '',
+    name: '',
   });
 
   const { email, password, name } = inputs;
@@ -19,19 +19,19 @@ const Register = ({ setAuth }) => {
     e.preventDefault();
     try {
       const body = { email, password, name };
-      const response = await fetch("http://localhost:5000/auth/register", {
-        method: "POST",
+      const response = await fetch('/auth/register', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(body),
       });
 
       const parseResponse = await response.json();
       if (parseResponse.token) {
-        localStorage.setItem("token", parseResponse.token);
+        localStorage.setItem('token', parseResponse.token);
         setAuth(true);
-        toast("Register successfully!");
+        toast('Register successfully!');
       } else {
         toast.error(parseResponse);
       }
