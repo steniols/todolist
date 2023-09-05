@@ -2,10 +2,6 @@
 
 Um simples aplicativo de tarefas utilizando Postgress, Express, React e Node.
 
-## Live
-
-https://steniols-pern-todo-list.herokuapp.com/
-
 ## Instalar o servidor
 
 ```bash
